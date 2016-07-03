@@ -10,11 +10,11 @@ import (
 
 func main() {
 	dir := os.Args[1]
-	max := listFiles(dir, dir)
+	max := logCount(dir, dir)
 	fmt.Println(max)
 }
 
-func listFiles(rootPath, searchPath string) int {
+func logCount(rootPath, searchPath string) int {
 	fis, err := ioutil.ReadDir(searchPath)
 
 	if err != nil {
@@ -26,7 +26,7 @@ func listFiles(rootPath, searchPath string) int {
 		fullPath := filepath.Join(searchPath, fi.Name())
 
 		if fi.IsDir() {
-			listFiles(rootPath, fullPath)
+			logCount(rootPath, fullPath)
 		} else {
 			rel, err := filepath.Rel(rootPath, fullPath)
 
