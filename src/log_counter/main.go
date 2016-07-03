@@ -6,12 +6,15 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"strconv"
+	"strings"
 )
 
 func main() {
 	dir := os.Args[1]
+	time := strings.Trim(dir, "/")
 	max := logCount(dir, dir)
-	fmt.Println(max)
+	fmt.Println(time + "\t" + strconv.Itoa(max))
 }
 
 func logCount(rootPath, searchPath string) int {
