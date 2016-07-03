@@ -11,6 +11,10 @@ import (
 )
 
 func main() {
+	if len(os.Args) != 2 {
+		fmt.Println("Please input directory.")
+		os.Exit(1)
+	}
 	dir := os.Args[1]
 	time := strings.Trim(dir, "/")
 	max := logCount(dir, dir)
